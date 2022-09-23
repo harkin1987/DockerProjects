@@ -1,0 +1,5 @@
+services:
+  gameserver:
+    image: harkin1987/csgo-server
+    volumes:
+      - '~/downloads:${GAMEDIR}/'
