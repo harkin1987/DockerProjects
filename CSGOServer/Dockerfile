@@ -2,11 +2,17 @@ FROM harkin1987/steamcmd
 
 LABEL creator="harkin1987@gmail.com"
 
-ENV APPID 740
-ENV APPNAME csgo
+ENV APPID 896660
+ENV APPNAME valheim
 ENV GAMEDIR "${STEAMCMDDIR}/${APPNAME}-dedicated"
 
 RUN set -x \
     && apt-get install wget -y \
-    && cd ~ \
-    && wget 
+    && mkdir -p "${GAMEDIR}" \
+    && wget https://raw.githubusercontent.com/harkin1987/DockerProjects/CSGOServer/CSGOServer/entrypoint.sh -O "${GAMEDIR}/entrypoint.sh" \
+    && chmod +x "${GAMEDIR}/entrypoint.sh" \
+    && chown -R steam:steam /home/steam
+     
+USER ${USER}
+WORKDIR ${GAMEDIR}
+ENTRYPOINT ./entrypoint.sh

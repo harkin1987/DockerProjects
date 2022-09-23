@@ -1,8 +1,8 @@
-!#/bin/bash
+#!/bin/bash
 
-mkdir -p ${GAMEDIR} || true
 #Download/Update game files
 bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${GAMEDIR}" +login anonymous +app_update "${APPID}" +quit
 cd "${GAMEDIR}"
 #Launch Server
-srcds -game csgo -console -usercon +game_type 0 +game_mode 0 +mapgroup mg_active +map de_dust2
+echo ls "${GAMEDIR}"
+#srcds -game csgo -console -usercon +game_type 0 +game_mode 0 +mapgroup mg_active +map de_dust2
