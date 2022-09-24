@@ -2,4 +2,4 @@ services:
   gameserver:
     image: harkin1987/csgo-server
     volumes:
-      - '/home/vagrant/steamdata:${GAMEDIR}'
+      - '/home/vagrant/steam_data:${GAMEDIR}'

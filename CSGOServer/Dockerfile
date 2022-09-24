@@ -8,12 +8,12 @@ ENV GAMEDIR "${STEAMCMDDIR}/${APPNAME}-dedicated"
 ENV USERBIN "/usr/local/bin"
 
 RUN set -x \
-    && apt-get install wget -y \
+    && apt-get install wget curl -y \
     && mkdir -p "${GAMEDIR}" \
     && wget https://raw.githubusercontent.com/harkin1987/DockerProjects/CSGOServer/CSGOServer/entrypoint.sh -O "${USERBIN}/entrypoint.sh" \
     && chmod +x "${USERBIN}/entrypoint.sh" \
     && chown -R steam:steam /home/steam
      
-USER ${USER}
+#USER ${USER}
 WORKDIR ${GAMEDIR}
 ENTRYPOINT ["entrypoint.sh"]
