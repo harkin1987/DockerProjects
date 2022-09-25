@@ -1,0 +1,7 @@
+services:
+  gameserver:
+    image: harkin1987/csgo-server
+    volumes:
+      - '/home/vagrant/steam_data:${GAMEDIR}'
+    ports:
+      - '20715:20721'
