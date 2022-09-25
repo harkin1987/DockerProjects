@@ -1,0 +1,7 @@
+services:
+  gameserver:
+    image: harkin1987/valheim
+    volumes:
+      - '/home/vagrant/steam_data:${GAMEDIR}'
+    ports:
+      - '2456-2458'
