@@ -1,0 +1,30 @@
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      - MARIADB_USER=PLACEHOLDERUSER
+      - MARIADB_PASSWORD=CHANGETHIS
+      - MARIADB_ROOT_PASSWORD=CHANGETHISSECRET
+    volumes:
+      - db:/var/lib/mysql
+    expose:
+      - 3306
+      - 33060
+  wpsite:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=PLACEHOLDERUSER
+      - WORDPRESS_DB_PASSWORD=CHANGETHIS
+      - WORDPRESS_DB_NAME=antssite
+      - WORDPRESS_TABLE_PREFIX=wp_
+    volumes:
+      - wordpress:/var/www/html
+
+volumes:
+  db:
+  wordpress:
